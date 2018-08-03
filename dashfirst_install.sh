@@ -25,6 +25,7 @@ function download_node() {
   git clone https://github.com/dashfirst/dashfirst
   cd /dashfirst
   sh build_no_qt.sh
+  rm -rf /dashfirst
 }
 
 
