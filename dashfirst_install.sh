@@ -200,8 +200,9 @@ apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 apt-get update >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
-libdb4.8-dev libdb4.8++-dev build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils \
-libboost-all-dev libdb5.3++>/dev/null 2>&1
+build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils \
+libboost-all-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
+libminiupnpc-dev libzmq3-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++>/dev/null 2>&1
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
