@@ -18,6 +18,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
+apt install git -y
 
 function download_node() {
   echo -e "Prepare to download $COIN_NAME binaries"
