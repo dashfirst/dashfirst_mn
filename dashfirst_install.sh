@@ -8,7 +8,7 @@ CONFIGFOLDER='/root/.dashfirstcore'
 COIN_DAEMON='dashfirstd'
 COIN_CLI='dashfirst-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/dashfirst/dashfirst'
+COIN_TGZ='https://github.com/dashfirst/dashfirst/releases/download/1.1.0.2/dashfirst_bin.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='dashfirst'
 COIN_PORT=15005
@@ -24,11 +24,14 @@ apt install git curl -y
 
 function download_node() {
   echo -e "Prepare to download $COIN_NAME binaries"
-  cd /
-  git clone https://github.com/dashfirst/dashfirst
-  cd /dashfirst
-  sh build_no_qt.sh
-  rm -rf /dashfirst
+  cd $TMP_FOLDER
+  wget -q $COIN_TGZ
+  tar xvzf $COIN_ZIP >/dev/null 2>&1
+  compile_error
+  strip $COIN_DAEMON $COIN_CLI
+  cp $COIN_DAEMON $COIN_CLI $COIN_PATH
+  cd - >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
 }
 
 
